@@ -7,13 +7,17 @@ class Searchbar extends Component {
     name: '',
   };
 
-  checkInput = e => {
-    this.setState({ name: e.target.value });
+  handleNameChange = e => {
+    this.setState({ name: e.currentTarget.value });
   };
 
   submitForm = e => {
     e.preventDefault();
-    console.log(this.state.name);
+    if (this.state.name.trim() === '') {
+      alert('Не правильно');
+      return;
+    }
+    this.props.onSubmit(this.state.name.toLowerCase());
     this.setState({ name: '' });
   };
 
@@ -37,7 +41,7 @@ class Searchbar extends Component {
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
-            onChange={this.checkInput}
+            onChange={this.handleNameChange}
             value={this.state.name}
           />
         </form>

@@ -4,12 +4,19 @@ import Searchbar from './Searchbar';
 import ImageGallery from './ImageGallery';
 
 export class App extends Component {
-  state = {};
+  state = {
+    name: '',
+  };
+
+  getNameImage = name => {
+    this.setState({ name });
+  };
+
   render() {
     return (
       <div className={css.App}>
-        <Searchbar />
-        <ImageGallery />
+        <Searchbar onSubmit={this.getNameImage} />
+        <ImageGallery name={this.state.name} />
       </div>
     );
   }
