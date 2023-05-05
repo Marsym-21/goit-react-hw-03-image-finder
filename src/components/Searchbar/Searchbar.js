@@ -14,9 +14,10 @@ class Searchbar extends Component {
   submitForm = e => {
     e.preventDefault();
     if (this.state.name.trim() === '') {
-      alert('Не правильно');
+      alert('Please enter a valid name !');
       return;
     }
+
     this.props.onSubmit(this.state.name.toLowerCase());
     this.setState({ name: '' });
   };
