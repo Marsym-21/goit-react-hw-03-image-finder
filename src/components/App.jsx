@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import css from './styles.module.css';
+import PropTypes from 'prop-types';
 import Searchbar from './Searchbar';
 import ImageGallery from './ImageGallery';
 import Button from './Button';
@@ -10,8 +11,7 @@ export class App extends Component {
     name: '',
     perpage: 12,
     hidden: false,
-    image:
-      'https://pixabay.com/get/gaacce6a4a676eb9e054d5e38260ebdcf23d3573c6c898901b372305eb1b28dd1eaf9e4b892b6486a683395b51db74816c12aebb60a4ced833d7017206ae4c40e_1280.jpg',
+    image: '',
     showModal: false,
   };
 
@@ -34,7 +34,6 @@ export class App extends Component {
   };
 
   getModalImage = e => {
-    console.log(e.target);
     return this.setState({ image: e.target.id, showModal: true });
   };
 
@@ -58,4 +57,14 @@ export class App extends Component {
       </div>
     );
   }
+  onPropTypes = {
+    image: PropTypes.string.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired,
+    name: PropTypes.string.isRequired,
+    renderGallery: PropTypes.func.isRequired,
+    perpage: PropTypes.number.isRequired,
+    getModalImage: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
+  };
 }

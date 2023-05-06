@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import css from '../styles.module.css';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import ImageGalleryItem from 'components/ImageGalleryItem';
 import Loader from 'components/Loader';
 class ImageGallery extends Component {
@@ -45,6 +46,9 @@ class ImageGallery extends Component {
       </ul>
     );
   }
+  onPropTypes = {
+    data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  };
 }
 
 export default ImageGallery;
